@@ -196,7 +196,7 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
 
         self.view.replace(
             edit, sublime.Region(0, self.view.size()),
-            output.decode(encoding))
+            output.decode(encoding).replace("\r", ""))
 
         # Re-enable previous tabs to space setting
         self.view.settings().set('translate_tabs_to_spaces', prev_tabs_to_spaces)
