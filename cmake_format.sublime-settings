@@ -1,0 +1,16 @@
+{
+    // This is the path to the binary for cmake-format. If it is in your path,
+    // it should just work out-of-the-box. Otherwise, you can set the full path,
+    // which will look like this: 
+    //    "binary": "/path/to/cmake-format"
+    // Note that you can set this from within ST directly through the Command
+    // Palette. 
+
+    "binary": "cmake-format",
+
+    // Setting this to true will run the formatter on every save. If you want to
+    // only enable this for a given project, try checking out the package
+    // "Project-Specific".
+    
+    "format_on_save": false
+}

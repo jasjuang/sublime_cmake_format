@@ -1,0 +1,4 @@
+[
+    { "caption": "CMake Format: Format Selection", "command": "cmake_format" },
+    { "caption": "CMake Format: Set Path", "command": "cmake_format_set_path" }
+]
