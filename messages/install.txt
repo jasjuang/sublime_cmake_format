@@ -1,0 +1,10 @@
+sublime_cmake_format
+-------------------------------
+This plugin is an autoformatter for CMake files.
+
+** IMPORTANT! **
+
+Before this plugin will activate, you *must*
+follow the installation instructions here:
+
+https://github.com/jasjuang/sublime_cmake_format
