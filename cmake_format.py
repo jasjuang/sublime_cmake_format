@@ -64,7 +64,7 @@ os_is_windows = os.name == 'nt'
 
 
 # The default name of the cmake-format executable
-default_binary = 'cmake-format'
+default_binary = 'cmake-format.exe' if os_is_windows else 'cmake-format'
 
 
 def which(program):
