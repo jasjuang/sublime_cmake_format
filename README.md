@@ -2,6 +2,7 @@ Sublime CMake Format
 ============
 
 [![Build Status](https://travis-ci.org/jasjuang/sublime_cmake_format.svg?branch=master)](https://travis-ci.org/jasjuang/sublime_cmake_format)
+[![Package Control](https://packagecontrol.herokuapp.com/downloads/CMakeFormat.svg?style=flat-square)](https://packagecontrol.io/packages/CMakeFormat)
 
 What it does
 ------------
