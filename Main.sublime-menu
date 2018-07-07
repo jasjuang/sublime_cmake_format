@@ -17,7 +17,7 @@
                                 "caption": "Settings – Default",
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/CMake Format/cmake_format.sublime-settings"
+                                    "file": "${packages}/CMakeFormat/cmake_format.sublime-settings"
                                 }
                             },
                             {
@@ -33,7 +33,7 @@
                                 "command": "open_file",
                                 "id": "bindings",
                                 "args": {
-                                    "file": "${packages}/CMake Format/Default (Windows).sublime-keymap",
+                                    "file": "${packages}/CMakeFormat/Default (Windows).sublime-keymap",
                                     "platform": "Windows"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -41,7 +41,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/CMake Format/Default (OSX).sublime-keymap",
+                                    "file": "${packages}/CMakeFormat/Default (OSX).sublime-keymap",
                                     "platform": "OSX"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -49,7 +49,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/CMake Format/Default (Linux).sublime-keymap",
+                                    "file": "${packages}/CMakeFormat/Default (Linux).sublime-keymap",
                                     "platform": "Linux"
                                 },
                                 "caption": "Key Bindings – Default"
