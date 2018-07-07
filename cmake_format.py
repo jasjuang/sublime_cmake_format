@@ -129,6 +129,17 @@ def load_settings():
     # We set these globals.
     global binary
     global format_on_save
+    global style
+    global line_width
+    global tab_size
+    global max_subargs_per_line
+    global separate_ctrl_name_with_space
+    global separate_fn_name_with_space
+    global dangle_parens
+    global bullet_char
+    global enum_char
+    global line_ending
+    global command_case
     settings_global = sublime.load_settings(settings_file)
     settings_local = sublime.active_window().active_view().settings().get('CmakeFormat', {})
 
@@ -136,6 +147,17 @@ def load_settings():
     # Load settings, with defaults.
     binary = load('binary', default_binary)
     format_on_save = load('format_on_save', False)
+    style = load('style', 'custom')
+    line_width = load('line_width', 80)
+    tab_size = load('tab_size', 2)
+    max_subargs_per_line = load('max_subargs_per_line', 3)
+    separate_ctrl_name_with_space = load('separate_ctrl_name_with_space', False)
+    separate_fn_name_with_space = load('separate_fn_name_with_space', False)
+    dangle_parens = load('dangle_parens', True)
+    bullet_char = load('bullet_char', '*')
+    enum_char = load('enum_char', '.')
+    line_ending = load('line_ending', 'unix')
+    command_case = load('command_case', 'lower')
 
 
 def is_supported(lang):
@@ -161,7 +183,21 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
         if encoding is None:
             encoding = 'utf-8'
 
-        command = [binary, str(self.view.file_name())]
+        if style == "custom":
+            command = [binary,
+                       '--line-width', str(line_width),
+                       '--tab-size', str(tab_size),
+                       '--max-subargs-per-line', str(max_subargs_per_line),
+                       '--separate-ctrl-name-with-space', str(separate_ctrl_name_with_space),
+                       '--separate-fn-name-with-space', str(separate_fn_name_with_space),
+                       '--dangle-parens', str(dangle_parens),
+                       '--bullet-char', bullet_char,
+                       '--enum-char', enum_char,
+                       '--line-ending', line_ending,
+                       '--command-case', command_case,
+                       str(self.view.file_name())]
+        else:
+            command = [binary, str(self.view.file_name())]
 
         print(command)
         # Run CF, and set buf to its output.
