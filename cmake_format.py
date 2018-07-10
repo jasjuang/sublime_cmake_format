@@ -178,6 +178,12 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
         if not check_binary():
             return
 
+        # Saving file manually so cmake-format runs on new contents
+        body = self.view.substr(sublime.Region(0, self.view.size()))
+        with open(self.view.file_name(), "w") as f:
+            f.write(body)
+            f.close()
+
         # The below code has been taken and tweaked from llvm.
         encoding = st_encodings_trans[self.view.encoding()]
         if encoding is None:
@@ -241,8 +247,8 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
 class CmakeFormatEventListener(sublime_plugin.EventListener):
     """Hook for on-save event, to allow application of cmake-format on save."""
 
-    def on_post_save(self, view):
-        """Check syntax and format on save post step."""
+    def on_pre_save(self, view):
+        """Check syntax and format on save prior step."""
 
         # Only do this for supported languages
         syntax = view.settings().get('syntax')
