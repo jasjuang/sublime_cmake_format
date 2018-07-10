@@ -241,8 +241,8 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
 class CmakeFormatEventListener(sublime_plugin.EventListener):
     """Hook for on-save event, to allow application of cmake-format on save."""
 
-    def on_pre_save(self, view):
-        """Check syntax and format on save prior step."""
+    def on_post_save(self, view):
+        """Check syntax and format on save post step."""
 
         # Only do this for supported languages
         syntax = view.settings().get('syntax')
