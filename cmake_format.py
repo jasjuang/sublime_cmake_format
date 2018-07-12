@@ -226,7 +226,8 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
             msg = error.decode("utf-8")
             if msg.strip().endswith(default_message):
                 msg = msg[:-len(default_message)-1]
-            sublime.error_message("CMake format: " + msg)
+            # sublime.error_message("CMake format: " + msg)
+            print("CMake format: " + msg)
             # Don't do anything.
             return
 
