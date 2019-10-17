@@ -150,14 +150,33 @@ def load_settings():
     style = load('style', 'custom')
     line_width = load('line_width', 80)
     tab_size = load('tab_size', 2)
-    max_subargs_per_line = load('max_subargs_per_line', 3)
+    max_subgroups_hwrap = load('max_subgroups_hwrap', 2)
+    max_pargs_hwrap = load('max_pargs_hwrap', 6)
     separate_ctrl_name_with_space = load('separate_ctrl_name_with_space', False)
     separate_fn_name_with_space = load('separate_fn_name_with_space', False)
-    dangle_parens = load('dangle_parens', True)
+    dangle_parens = load('dangle_parens', False)
+    dangle_align = load('dangle_align', 'prefix')
+    min_prefix_chars = load('min_prefix_chars', 4)
+    max_prefix_chars = load('max_prefix_chars', 10)
+    max_lines_hwrap = load('max_lines_hwrap', 2)
+    line_ending = load('line_ending', 'unix')
+    command_case = load('command_case', 'canonical')
+    keyword_case = load('keyword_case', 'unchanged')
+    always_wrap = load('always_wrap', '[]')
+    enable_sort = load('enable_sort', True)
+    autosort = load('autosort', False)
+    hashruler_min_length = load('hashruler_min_lengths', 10)
     bullet_char = load('bullet_char', '*')
     enum_char = load('enum_char', '.')
-    line_ending = load('line_ending', 'unix')
-    command_case = load('command_case', 'lower')
+    enable_markup = load('enable_markup', True)
+    first_comment_is_literal = load('first_comment_is_literal', False)
+    literal_comment_pattern = load('literal_comment_pattern', 'None')
+    fence_pattern = load('fence_pattern', '^\\s*([`~]{{3}}[`~]*)(.*)$')
+    ruler_pattern = load('ruler_pattern', '^\\s*[^\\w\\s]{{3}}.*[^\\w\\s]{{3}}$')
+    canonicalize_hashrulers = load('canonicalize_hashrulers', True)
+    emit_byteorder_mark = load('emit_byteorder_mark', False)
+    input_encoding = load('input_encoding', 'utf-8')
+    output_encoding = load('output_encoding', 'utf-8')
 
 
 def is_supported(lang):
@@ -187,14 +206,33 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
             command = [binary,
                        '--line-width', str(line_width),
                        '--tab-size', str(tab_size),
-                       '--max-subargs-per-line', str(max_subargs_per_line),
+                       '--max-subgroups-hwrap', str(max_subgroups_hwrap),
+                       '--max-pargs-hwrap', str(max_pargs_hwrap),
                        '--separate-ctrl-name-with-space', str(separate_ctrl_name_with_space),
                        '--separate-fn-name-with-space', str(separate_fn_name_with_space),
                        '--dangle-parens', str(dangle_parens),
-                       '--bullet-char', bullet_char,
-                       '--enum-char', enum_char,
+                       '--dangle-align', dangle_align,
+                       '--min-prefix-chars', str(min_prefix_chars),
+                       '--max-prefix-chars', str(max_prefix_chars),
+                       '--max-lines-hwrap', str(max_lines_hwrap),
                        '--line-ending', line_ending,
                        '--command-case', command_case,
+                       '--keyword-case', keyword_case,
+                       '--always-wrap', always_wrap,
+                       '--enable-sort', str(enable_sort),
+                       '--autosort', str(autosort),
+                       '--hashruler-min-length', str(hashruler_min_length),
+                       '--bullet-char', bullet_char,
+                       '--enum-char', enum_char,
+                       '--enable-markup', str(enable_markup),
+                       '--first-comment-is-literal', str(first_comment_is_literal),
+                       '--literal-comment-pattern', literal_comment_pattern,
+                       '--fence-pattern', fence_pattern,
+                       '--ruler-pattern', ruler_pattern,
+                       '--canonicalize-hashrulers', str(canonicalize_hashrulers),
+                       '--emit-byteorder-mark', str(emit_byteorder_mark),
+                       '--input-encoding', input_encoding,
+                       '--output-encoding', output_encoding,
                        str(self.view.file_name())]
         else:
             command = [binary, str(self.view.file_name())]
