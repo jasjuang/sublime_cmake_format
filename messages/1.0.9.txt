@@ -6,4 +6,4 @@ Breaking changes for cmake_format 0.6.0!
 
 For more details see here https://github.com/cheshirekow/cmake_format/releases
 
-For this plugin, starting from release 1.0.8 only cmake_format 0.6.0 and newer will be supported. So update your cmake_format now (e.g. pip install cmake-format --upgrade)
+For this plugin, starting from release 1.0.9 only cmake_format 0.6.0 and newer will be supported. So update your cmake_format now (e.g. pip install cmake-format --upgrade)
