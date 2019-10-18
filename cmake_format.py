@@ -132,14 +132,33 @@ def load_settings():
     global style
     global line_width
     global tab_size
-    global max_subargs_per_line
+    global max_subgroups_hwrap
+    global max_pargs_hwrap
     global separate_ctrl_name_with_space
     global separate_fn_name_with_space
     global dangle_parens
-    global bullet_char
-    global enum_char
+    global dangle_align
+    global min_prefix_chars
+    global max_prefix_chars
+    global max_lines_hwrap
     global line_ending
     global command_case
+    global keyword_case
+    global always_wrap
+    global enable_sort
+    global autosort
+    global hashruler_min_length
+    global bullet_char
+    global enum_char
+    global enable_markup
+    global first_comment_is_literal
+    global literal_comment_pattern
+    global fence_pattern
+    global ruler_pattern
+    global canonicalize_hashrulers
+    global emit_byteorder_mark
+    global input_encoding
+    global output_encoding
     settings_global = sublime.load_settings(settings_file)
     settings_local = sublime.active_window().active_view().settings().get('CmakeFormat', {})
 
