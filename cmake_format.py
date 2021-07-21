@@ -310,7 +310,7 @@ class CmakeFormatEventListener(sublime_plugin.EventListener):
             if format_on_save:
                 # Saving file manually so cmake-format runs on new contents
                 body = view.substr(sublime.Region(0, view.size()))
-                with open(view.file_name(), "w") as f:
+                with open(view.file_name(), "w", encoding=input_encoding) as f:
                     f.write(body)
                     f.close()
 
