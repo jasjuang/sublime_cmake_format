@@ -160,7 +160,7 @@ def load_settings():
     global input_encoding
     global output_encoding
     settings_global = sublime.load_settings(settings_file)
-    settings_local = sublime.active_window().active_view().settings().get('CmakeFormat', {})
+    settings_local = sublime.active_window().active_view().settings().get('CMakeFormat', {})
 
     def load(name, default): return settings_local.get(name, settings_global.get(name, default))
     # Load settings, with defaults.
