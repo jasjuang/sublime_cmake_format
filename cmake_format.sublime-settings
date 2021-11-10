@@ -15,11 +15,15 @@
     "format_on_save": false,
 
     // The below custom setup will be used if this is set to "custom"
-    // If it's set to "file" then it will attempt to automatically detected
+    // If it's set to "default", cmake-format will attempt to automatically detect
     // configuration files may have any name that matches
-    // \.?cmake-format(.yaml|.json|.py)
+    // \.?cmake-format(.yaml|.json|.py). You can also set it to "file", which you
+    // can specify the "config_file" parameter to your own configuration files
 
-    "style": "custom",
+    "style": "default",
+
+    // Full path to your own configuration files
+    "config_file": "",
 
     // --------------------------
     // General Formatting Options
@@ -55,6 +59,9 @@
     // column of the arguments
     "dangle_align": "prefix",
 
+    // If the statement spelling length (including space and
+    // parenthesis) is smaller than this amount, then force reject
+    // nested layouts.
     "min_prefix_chars": 4,
 
     // If the statement spelling length (including space and parenthesis is larger

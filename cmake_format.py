@@ -130,6 +130,7 @@ def load_settings():
     global binary
     global format_on_save
     global style
+    global config_file
     global line_width
     global tab_size
     global max_subgroups_hwrap
@@ -166,7 +167,8 @@ def load_settings():
     # Load settings, with defaults.
     binary = load('binary', default_binary)
     format_on_save = load('format_on_save', False)
-    style = load('style', 'custom')
+    style = load('style', 'default')
+    config_file = load('config_file', '')
     line_width = load('line_width', 80)
     tab_size = load('tab_size', 2)
     max_subgroups_hwrap = load('max_subgroups_hwrap', 2)
@@ -221,8 +223,16 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
         if encoding is None:
             encoding = 'utf-8'
 
-        if style == "custom":
-            command = [binary,
+        if style == "default":
+            command = [binary, str(self.view.file_name())]
+        elif style == "file":
+            if not config_file:
+                command = [binary, str(self.view.file_name())]
+            else:
+                command = [binary, str(self.view.file_name()),
+                           '-c', config_file]
+        elif style == "custom":
+            command = [binary, str(self.view.file_name()),
                        '--line-width', str(line_width),
                        '--tab-size', str(tab_size),
                        '--max-subgroups-hwrap', str(max_subgroups_hwrap),
@@ -251,10 +261,10 @@ class CmakeFormatCommand(sublime_plugin.TextCommand):
                        '--canonicalize-hashrulers', str(canonicalize_hashrulers),
                        '--emit-byteorder-mark', str(emit_byteorder_mark),
                        '--input-encoding', input_encoding,
-                       '--output-encoding', output_encoding,
-                       str(self.view.file_name())]
+                       '--output-encoding', output_encoding]
         else:
-            command = [binary, str(self.view.file_name())]
+            print("CMake format: invalid style, choose either default, file, or custom")
+            return
 
         print(command)
         # Run CF, and set buf to its output.

@@ -40,7 +40,7 @@ Use
   to `"format_on_save": true`.
 - To change settings on a per-package basis, add them under `CMakeFormat` key,
   example project.sublime-settings:
-- To use style from a file (for example `.cmake-format`), change settings to `"style": "file"`. Otherwise `custom` style is used.
+- To use style from a file, change settings to `"style": "file"`. Otherwise `default` style is used.
 
 ```json
 {
@@ -48,7 +48,8 @@ Use
   "settings": {
     "CMakeFormat": {
       "style": "file",
-      "format_on_save": true
+      "format_on_save": true,
+      "config_file": "/path/to/your/cmake-format-config-file"
     }
   }
 }
